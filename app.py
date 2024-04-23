@@ -24,7 +24,7 @@ client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 @app.on_event("startup")
 async def startup_event():
     bot_token = env.str("BOT_TOKEN")
-    webhook_url = "https://your-real-deployment-url/receive-message/"
+    webhook_url = "https://gpt4daribarchat2desk-production.up.railway.app/receive-message/"
     async with httpx.AsyncClient() as client:
         await client.post(f"https://api.telegram.org/bot{bot_token}/deleteWebhook?drop_pending_updates=True")
         await client.post(f"https://api.telegram.org/bot{bot_token}/setWebhook?url={webhook_url}")
